@@ -22,6 +22,18 @@ def init_db():
 def index():
     return render_template('index.html')
 
+@app.route('/location')
+def location():
+    return render_template('location.html')
+
+@app.route('/qa')
+def qa():
+    return render_template('qa.html')
+
+@app.route('/contact-us')
+def contact_us():
+    return render_template('contact-us.html')
+
 @app.route('/rsvp', methods=['POST'])
 def rsvp():
     name = request.form['name']
