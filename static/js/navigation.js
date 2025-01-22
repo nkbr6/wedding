@@ -72,7 +72,15 @@ document.addEventListener("DOMContentLoaded", () => {
     buttons.forEach(button => {
         button.addEventListener("click", () => {
             const page = button.getAttribute("data-page");
-            page === "index" ? window.location.href = "/" : loadPage(page);
+            const externalUrl = button.getAttribute("data-url");
+
+            if (externalUrl) {
+                // Redirect to the external URL
+                window.location.href = externalUrl;
+            } else {
+                // Load the page dynamically
+                page === "index" ? window.location.href = "/" : loadPage(page);
+            }
         });
     });
 
