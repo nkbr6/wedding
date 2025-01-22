@@ -51,8 +51,8 @@ body {
 
 /* Bottom Background Image */
 .bg-bottom {
-    position: absolute; /* Position relative to .background-wrapper */
-    bottom: 0; /* Stick to the bottom of the parent */
+    position: absolute; /* Default to absolute positioning */
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 200px; /* Adjust height as needed */
@@ -61,6 +61,10 @@ body {
     background-position: bottom left;
     background-size: auto;
     z-index: -1; /* Ensure it stays behind the content */
+}
+
+.bg-bottom.fixed {
+    position: fixed; /* Override to fixed positioning */
 }
 
 /* Header Styles */
@@ -94,14 +98,6 @@ body {
 
 main {
     flex: 1;
-}
-
-/* Footer Styles */
-footer {
-    text-align: center;
-    padding: 1px 0;
-    background-color: #333;
-    color: white;
 }
 
 /* Utility Classes */

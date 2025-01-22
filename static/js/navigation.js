@@ -1,6 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
     const content = document.getElementById("content");
     const buttons = document.querySelectorAll(".header button");
+    const daysRemainingElement = document.querySelector(".days-remaining");
+    const bgBottom = document.querySelector(".bg-bottom");
+
+    // Function to calculate and display the countdown
+    function updateCountdown() {
+        const targetDate = new Date("September 12, 2025 00:00:00").getTime(); // Target date
+        const now = new Date().getTime(); // Current date
+        const timeDifference = targetDate - now; // Difference in milliseconds
+
+        // Calculate days remaining
+        const daysRemaining = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+        // Update the "XXX days to go" text
+        if (daysRemaining > 0) {
+            daysRemainingElement.textContent = `${daysRemaining} days to go!`;
+        } else if (daysRemaining === 0) {
+            daysRemainingElement.textContent = "Today is the day!";
+        } else {
+            daysRemainingElement.textContent = "The event has passed!";
+        }
+    }
+
+    // Function to update the position of .bg-bottom
+    function updateBgBottomPosition() {
+        const documentHeight = document.documentElement.scrollHeight;
+        const viewportHeight = window.innerHeight;
+
+        if (documentHeight <= viewportHeight) {
+            // If document height is less than or equal to viewport height
+            bgBottom.classList.add("fixed");
+        } else {
+            // If document height is greater than viewport height
+            bgBottom.classList.remove("fixed");
+        }
+    }
 
     // Function to load content dynamically
     async function loadPage(page) {
@@ -12,6 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Update the active button
             updateActiveButton(page);
+
+            // Update the position of .bg-bottom after loading new content
+            updateBgBottomPosition();
         } catch (error) {
             content.innerHTML = "<p>Sorry, this page could not be loaded.</p>";
         }
@@ -41,26 +79,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set the initial active button based on the current URL
     const initialPage = window.location.pathname.split('/').pop() || 'index';
     updateActiveButton(initialPage);
+
+    // Update the countdown on page load
+    updateCountdown();
+
+    // Update the position of .bg-bottom on page load
+    updateBgBottomPosition();
+
+    // Update the position of .bg-bottom on window resize
+    window.addEventListener("resize", updateBgBottomPosition);
+
+    // Update the position of .bg-bottom on content changes (optional, if content is dynamically loaded)
+    const observer = new MutationObserver(updateBgBottomPosition);
+    observer.observe(document.body, { childList: true, subtree: true });
 });
-
-// document.addEventListener('scroll', function () {
-//     const body = document.body;
-//     const scrollY = window.scrollY;
-//     const viewportHeight = window.innerHeight;
-//     const pageHeight = document.documentElement.scrollHeight;
-
-//     // Hide the top background image when scrolling down
-//     if (scrollY > 50) { // Reduced threshold to 50px
-//         body.classList.add('hide-top-bg');
-//     } else {
-//         body.classList.remove('hide-top-bg');
-//     }
-
-//     // Show the bottom background image when near the bottom of the page
-//     const bottomOffset = pageHeight - (scrollY + viewportHeight);
-//     if (bottomOffset < 50) { // Reduced threshold to 50px
-//         body.classList.add('show-bottom-bg');
-//     } else {
-//         body.classList.remove('show-bottom-bg');
-//     }
-// });
