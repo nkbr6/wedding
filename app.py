@@ -36,15 +36,25 @@ def contact_us():
 
 @app.route('/rsvp', methods=['POST'])
 def rsvp():
-    name = request.form['name']
-    email = request.form['email']
-    message = request.form['message']
+    name = request.form.get('name')
+    email = request.form.get('email')
+    message = request.form.get('message', '')
 
-    conn = sqlite3.connect('rsvp.db')
-    cursor = conn.cursor()
-    cursor.execute('INSERT INTO guests (name, email, message) VALUES (?, ?, ?)', (name, email, message))
-    conn.commit()
-    conn.close()
+    if not name or not email:
+        return "Name and email are required.", 400
+
+    conn = None
+    try:
+        conn = sqlite3.connect('rsvp.db')
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO guests (name, email, message) VALUES (?, ?, ?)', (name, email, message))
+        conn.commit()
+    except sqlite3.Error as e:
+        print(f"Database error: {e}")
+        return "An error occurred while processing your RSVP.", 500
+    finally:
+        if conn:
+            conn.close()
 
     return redirect(url_for('thank_you'))
 

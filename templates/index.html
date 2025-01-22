@@ -4,30 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hannah & Nikita's Wedding</title>
-    <link rel="stylesheet" href="static/css/styles.css">
-    <script defer src="static/js/navigation.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script defer src="{{ url_for('static', filename='js/navigation.js') }}"></script>
 </head>
 <body>
-    <header class="header">
-        <button data-page="index">Home</button>
-        <button data-page="location">Location</button>
-        <button data-page="qa">Q & A</button>
-        <button data-page="contact-us">Contact Us</button>
-        <button data-page="rsvp">RSVP</button>
-    </header>
+    <div class="background-wrapper">
+        <!-- Top Background Image -->
+        <div class="bg-top"></div>
 
-    <main id="content">
-        <div class="hero">
-            <h1>Hannah & Nikita</h1>
-            <p class="date">September 2025</p>
-            <p class="days-remaining">XXX days to go!</p>
+        <!-- Content Wrapper -->
+        <div class="content-wrapper">
+            <header class="header">
+                <h1>Hannah & Nikita</h1>
+                <p class="date">Friday, September 12, 2025</p>
+                <p class="days-remaining">XXX days to go!</p>
+                <nav>
+                    <button data-page="index">Home</button>
+                    <button data-page="location">Location</button>
+                    <button data-page="qa">Q & A</button>
+                    <button data-page="contact-us">Contact Us</button>
+                    <button data-page="rsvp">RSVP</button>
+                </nav>
+            </header>
+
+            <main id="content">
+                <section>
+                    <h1>Wedding Day</h1>
+                    <h3>Friday, September 12, 2025</h3>
+                    <h2>Ceremony</h2>
+                    <h3>16:30 - 17:30</h3>
+                    <h2>Dinner</h2>
+                    <h3>17:30 - 00:00</h3>
+                </section>
+            </main>
         </div>
 
-        <p>Welcome to our wedding website! Here you’ll find details about our celebration, including location, RSVP, and more.</p>
-    </main>
+        <!-- Bottom Background Image -->
+        <div class="bg-bottom"></div>
 
-    <footer>
-        <p>&copy; 2025 Hannah & Nikita's Wedding</p>
-    </footer>
+        <footer>
+            <p>&copy; 2025 Hannah & Nikita's Wedding</p>
+        </footer>
+    </div>
 </body>
 </html>
