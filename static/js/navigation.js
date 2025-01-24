@@ -75,8 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const externalUrl = button.getAttribute("data-url");
 
             if (externalUrl) {
-                // Redirect to the external URL
-                window.location.href = externalUrl;
+                // Open the external URL in a new tab
+                window.open(externalUrl, "_blank");
             } else {
                 // Load the page dynamically
                 page === "index" ? window.location.href = "/" : loadPage(page);
