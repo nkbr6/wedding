@@ -28,6 +28,39 @@ body {
     padding: 20px;
 }
 
+/* RSVP Button Styles */
+.rsvp-button {
+    display: inline-block;
+    /* margin-top: 20px; */
+    padding: 10px 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #738d5a; /* A warm, wedding-appropriate color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.rsvp-button:hover {
+    background-color: #b46258; /* Darker shade on hover */
+}
+
+/* RSVP Link Styles */
+.rsvp-link {
+    color: #8B7355; /* Same color as the RSVP button for consistency */
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.rsvp-link:hover {
+    color: #6B5A4A; /* Darker shade on hover */
+}
+
 @media (max-width: 1000px) {
     .content-wrapper {
         padding-top: 200px;

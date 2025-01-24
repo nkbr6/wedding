@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script defer src="{{ url_for('static', filename='js/navigation.js') }}"></script>
 </head>
+
 <body>
     <div class="background-wrapper">
         <!-- Top Background Image -->
@@ -17,25 +19,32 @@
         <div class="content-wrapper">
             <header class="header">
                 <h1>Hannah & Nikita</h1>
-                <p class="date">Friday, September 12, 2025</p>
-                <p class="days-remaining">XXX days to go!</p>
+                <h4 class="date">Friday, September 12, 2025</h4>
+                <h4 class="days-remaining">XXX days to go!</h4>
                 <nav>
                     <button data-page="index">Home</button>
                     <button data-page="location">Location</button>
                     <button data-page="qa">Q & A</button>
                     <button data-page="contact-us">Contact Us</button>
-                    <button data-page="rsvp" data-url="https://www.google.ca">RSVP</button>
+                    <button data-page="rsvp"
+                        data-url="https://docs.google.com/forms/d/e/1FAIpQLSeD2PtzarGG0V5GxGYtRL4I6tQJI0fuOlV4QHWYwBYDANGPlg/viewform">RSVP</button>
                 </nav>
             </header>
 
             <main id="content">
+
                 <section>
+                                                <!-- RSVP Button -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeD2PtzarGG0V5GxGYtRL4I6tQJI0fuOlV4QHWYwBYDANGPlg/viewform"
+            target="_blank" class="rsvp-button">RSVP</a>
                     <h1>Wedding Day</h1>
-                    <h3>Friday, September 12, 2025</h3>
+                    <p>Friday, September 12, 2025</p>
                     <h2>Ceremony</h2>
-                    <h3>16:30 - 17:30</h3>
+                    <p>16:30 - 17:30</p>
+                    <h2>Cocktail Hour</h2>
+                    <p>17:30 - 18:30</p>
                     <h2>Dinner</h2>
-                    <h3>17:30 - 00:00</h3>
+                    <p>18:30-00:00</p>
                 </section>
             </main>
         </div>
@@ -44,4 +53,5 @@
         <div class="bg-bottom"></div>
     </div>
 </body>
+
 </html>
