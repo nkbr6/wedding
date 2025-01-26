@@ -104,8 +104,46 @@ body {
 .header {
     padding: 10px;
     text-align: center;
+    position: relative; /* Needed for pseudo-elements */
 }
 
+/* Line between "days-remaining" and nav buttons */
+.header h4.days-remaining {
+    position: relative;
+    margin-bottom: 20px; /* Add space below the "days-remaining" text */
+}
+
+.header h4.days-remaining::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Position the line below the text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Full width by default */
+    max-width: 500px; /* Max width to align with navbar */
+    height: 1px; /* Thickness of the line */
+    background-color: #738d5a; /* Color of the line */
+}
+
+/* Line between nav buttons and content */
+.header nav {
+    position: relative;
+    margin-bottom: 20px; /* Add space below the nav buttons */
+}
+
+.header nav::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Position the line below the nav buttons */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Full width by default */
+    max-width: 500px; /* Max width to align with navbar */
+    height: 1px; /* Thickness of the line */
+    background-color: #738d5a; /* Color of the line */
+}
+
+/* Header Button Styles */
 .header button {
     font-family: 'Playfair Display', serif;
     border: none;
